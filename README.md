@@ -17,7 +17,7 @@ Main dependencies:
 For a fully-automatic setup of the virtual environment (tested on Linux Ubuntu 18.04), set the variable `BASE_DIR` in `scripts/install.sh` to a valid directory, and then run `source scripts/install.sh`.
 
 You should have sudo privileges to run properly the installation script.
-By default, the virtual environment will be created at `$BASE_DIR/envs/deeprec-cvp20`. When finishing, the script will automatically activate the just created environment.
+By default, the virtual environment will be created at `$BASE_DIR/envs/deeprec-cvpr20`. When finishing, the script will automatically activate the just created environment.
 
 #### Download the datasets
 
