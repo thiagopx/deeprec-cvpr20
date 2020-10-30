@@ -50,11 +50,6 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-# assert args.solver in ['concorde', 'kbh', 'LS']
-# assert args.thresh in ['otsu', 'sauvola']
-
-# random.seed(int(args.seed))
-
 # algorithm definition
 weights_path_left = json.load(open('traindata/{}/info.json'.format(args.model_id), 'r'))['best_model_left']
 weights_path_right = json.load(open('traindata/{}/info.json'.format(args.model_id), 'r'))['best_model_right']
@@ -65,7 +60,6 @@ algorithm = Proposed(
     activation=args.activation, sample_height=sample_height,
     thresh_method=args.thresh
 )
-print(sample_height)
 
 # pipeline: compatibility algorithm + solver
 solver = SolverConcorde(maximize=False, max_precision=2)
