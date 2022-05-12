@@ -1,10 +1,11 @@
 PROJECT=deeprec-cvpr20
-BASE_DIR=/mnt/data
+[[ ! -z "$1" ]] && BASE_DIR=$1 || BASE_DIR=$HOME
+echo $HOME $BASE_DIR
 PROJECT_DIR=$BASE_DIR/$PROJECT
 ENV_DIR=$BASE_DIR/envs/$PROJECT # directory for the virtual environemnt
 QSOPTDIR=$BASE_DIR/qsopt
 CONCORDEDIR=$BASE_DIR/concorde
-PYTHON_VERSION=6
+[[ ! -z "$1" ]] && PYTHON_VERSION=$1 || PYTHON_VERSION=8
 ORANGE='\033[1;33m'
 BLUE='\033[1;34m'
 NC='\033[0m' # No Color
