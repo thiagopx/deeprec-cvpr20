@@ -2,7 +2,7 @@ pillow
 scikit-image==0.16.2
 scikit-learn==0.23.1
 # tensorflow-gpu==1.10.1
-opencv-python==3.4.17.63
+opencv-python==4.2.0.32
 numba
 seaborn==0.10.0
 pyenchant
