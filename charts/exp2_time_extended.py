@@ -28,9 +28,8 @@ sib18 = np.array([results["prep_time"], results["pw_time"], results["opt_time"]]
 matrix = np.array([prop, sib18])
 
 # Set figsize here
-# fig, (ax1, ax2, ax3) = plt.subplots(ncols=3, figsize=(14, 3), sharey=False)
 fig, axd = plt.subplot_mosaic(
-    [["A", "B", "B"]], figsize=(12, 3), constrained_layout=True
+    [["A", "A", "B", "B", "B"]], figsize=(12, 3), constrained_layout=True
 )
 ax1, ax2 = axd["A"], axd["B"]
 fig.tight_layout(pad=1.0)
@@ -40,7 +39,6 @@ size_dataset = len(results["solution"])
 gray = [0.3] * 3
 width = 0.35  # the width of the bars: can also be len(x) sequence
 x1 = [0.55, 1.45]
-print(matrix)
 p1 = ax1.bar(
     x1, matrix[:, 0], width, color=colors[0], linewidth=1, edgecolor=gray
 )  # pro
@@ -56,7 +54,7 @@ p3 = ax1.bar(
     edgecolor=gray,
 )  # opt
 
-y1_ticks = [60 * x for x in range(0, 101, 20)]
+y1_ticks = [60 * x for x in range(0, 81, 20)]
 ax1.set_xlim([0, 2])
 ax1.set_xlabel("method")
 ax1.set_yticks(y1_ticks)
@@ -71,19 +69,20 @@ ax1.legend(
 )
 ax1.set_title("$n={}$".format(size_dataset))
 ax1.set_xticks(x1)
-ax1.set_xticklabels(("\\textbf{Deeprec-ML}", "Deeprec-CL"))
+ax1.set_xticklabels(("\\textsc{Deeprec-ML}", "\\textsc{Deeprec-CL}"), fontsize=14)
 
 matrix_avg = np.array(
     [
-        #      pro               pw
         [
-            matrix[0, 0] / size_dataset,
-            matrix[0, 1] / (size_dataset * (size_dataset - 1)),
-        ],  # prop
+            # proposed
+            matrix[0, 0] / size_dataset,  # pro
+            matrix[0, 1] / (size_dataset * (size_dataset - 1)),  # pw
+        ],
         [
-            matrix[1, 0] / size_dataset,
-            matrix[1, 1] / (size_dataset * (size_dataset - 1)),
-        ],  # base
+            # sib 18
+            matrix[1, 0] / size_dataset,  # pro
+            matrix[1, 1] / (size_dataset * (size_dataset - 1)),  # pw
+        ],
     ]
 )
 
@@ -91,7 +90,6 @@ matrix_avg = np.array(
 size_total = 3000
 x2 = np.arange(2, size_total + 1)
 y2_ticks = [60 * x for x in range(0, 4001, 500)]
-# # # p5 = ax2.bar(x, matrix[2 :, 1], width, bottom=matrix[2 :, 0], color=colors[1], edgecolor=gray) # pw
 total_sib18 = matrix_avg[1, 0] * x2 + matrix_avg[1, 1] * (x2 * (x2 - 1))
 total_prop = matrix_avg[0, 0] * x2 + matrix_avg[0, 1] * (x2 * (x2 - 1))
 p4 = ax2.plot(x2, total_prop, color=colors[0])  # prop
@@ -108,16 +106,12 @@ ax2.set_ylabel("time (hour)")
 ax2.vlines(size_dataset, 0, 66 * 3600, linestyles="dashed", colors="red")
 ax2.legend(
     (p4[0], p5[0]),
-    ("\\textbf{Deeprec-ML}", "Deeprec-CL"),
+    ("\\textsc{Deeprec-ML}", "\\textsc{Deeprec-CL}"),
     title="\\textbf{method}",
-    fontsize=16,
+    fontsize=14,
     title_fontsize=16,
     loc="upper center",
 )
-
-# # idx = np.where(x2 == 30)[0][0]
-# # t_prop = total_prop[idx]
-# # t_sib18 = total_sib18[idx]
 
 ax2.annotate(
     "$\\approx$1 page",
@@ -128,7 +122,7 @@ ax2.annotate(
 )
 
 ax2.annotate(
-    "speed-up = $\\approx$22x",
+    "$\\approx$22x of speed-up",
     xy=(505, 10000),
     xytext=(650, 60000),
     arrowprops=dict(facecolor="black", shrink=0.01),
@@ -143,5 +137,9 @@ for ax in [ax1, ax2]:
     ax.spines["right"].set_visible(False)
     ax.spines["bottom"].set_visible(False)
 
-print("speed-up(505) = {:.3f}".format(total_sib18[100] / total_prop[100]))
+print("speed-up(505) (real) ={:.3f}".format(sib18[:2].sum() / prop[:2].sum()))
+print("speed-up(505) (est) = {:.3f}".format(total_sib18[504] / total_prop[504]))
+print("speed-up(3000) = {:.3f}".format(total_sib18[-1] / total_prop[-1]))
 plt.savefig("{}/exp2_time_extended.pdf".format(path))  # , bbox_inches="tight")
+
+print(total_sib18[:-10] / total_prop[:-10])

@@ -1,10 +1,11 @@
-pillow==5.3
-scikit-image==0.15.0
+pillow
+scikit-image==0.16.2
 scikit-learn==0.23.1
-tensorflow-gpu==1.10.1
-opencv-python==3.3.1.11
+# tensorflow-gpu==1.10.1
+opencv-python==3.4.17.63
 numba
 seaborn==0.10.0
 pyenchant
 pytesseract
 texttable
+pandas

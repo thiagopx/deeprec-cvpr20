@@ -38,7 +38,18 @@ for dataset in datasets:
                 prep_time = run["opt_time"]
                 doc = run["doc"].split("/")[-1]
                 records.append(
-                    [method, dataset, doc, enabled, 100 * accuracy, comp_time, inf_time, prep_time, pw_time, opt_time]
+                    [
+                        method,
+                        dataset,
+                        doc,
+                        enabled,
+                        100 * accuracy,
+                        comp_time,
+                        inf_time,
+                        prep_time,
+                        pw_time,
+                        opt_time,
+                    ]
                 )
 
 df = pd.DataFrame.from_records(
@@ -57,8 +68,12 @@ df = pd.DataFrame.from_records(
     ),
 )
 
-df["method"] = df["method"].map({"proposed": "\\textbf{Deeprec-ML}", "sib18": "Deeprec-CL"})
-df["dataset"] = df["dataset"].map({"D1": "\\textsc{S-Marques}", "D2": "\\textsc{S-Isri-OCR}"})
+df["method"] = df["method"].map(
+    {"proposed": "\\textsc{Deeprec-ML}", "sib18": "\\textsc{Deeprec-CL}"}
+)
+df["dataset"] = df["dataset"].map(
+    {"D1": "\\textsc{S-Marques}", "D2": "\\textsc{S-Isri-OCR}"}
+)
 
 print(df.groupby(["dataset", "method", "vert. shift"]).mean())
 
