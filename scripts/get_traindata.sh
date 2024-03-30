@@ -1,4 +1,3 @@
-chmod +x scripts/gdown.pl
-scripts/gdown.pl https://drive.google.com/file/d/1gYANaxaEfXfz473ufpXxoGoLrCODF_vh /tmp/traindata.zip
-unzip /tmp/traindata.zip -d /tmp
-mv /tmp/traindata traindata
+gdown https://drive.google.com/uc?id=1gYANaxaEfXfz473ufpXxoGoLrCODF_vh -O traindata.zip
+unzip traindata.zip
+rm traindata.zip

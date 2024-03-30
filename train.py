@@ -7,7 +7,8 @@ import time
 
 import numpy as np
 import cv2
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 from sklearn.utils import shuffle
 from sklearn.metrics import silhouette_score
 import multiprocessing as mp

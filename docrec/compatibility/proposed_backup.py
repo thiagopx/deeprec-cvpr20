@@ -8,8 +8,8 @@ import cv2
 from skimage.filters import threshold_sauvola, threshold_otsu
 import numpy as np
 import math
-import tensorflow as tf
-# from keras import backend as K
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 from .algorithm import Algorithm
 from ..neural.models.affinet import AffiNET

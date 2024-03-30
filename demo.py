@@ -6,7 +6,7 @@ import random
 import matplotlib.pyplot as plt
 
 from docrec.metrics import accuracy
-from docrec.strips.strips import Strips
+from docrec.strips import Strips
 from docrec.compatibility.proposed import Proposed
 from docrec.pipeline import Pipeline
 from docrec.solverconcorde import SolverConcorde
