@@ -5,19 +5,11 @@
 This repository comprises datasets and source codes used in our [CVPR 2020 paper](https://openaccess.thecvf.com/content_CVPR_2020/papers/Paixao_Faster_Reconstruction_of_Shredded_Text_Documents_via_Self-Supervised_Deep_Asymmetric_CVPR_2020_paper.pdf).
 
 #### Preparing the enviroment with virtualenv
-Main dependencies:
+Python dependencies are listed in requirements.txt. Optimization 3rd party dependencies include Concorde and QSopt.
 
-* python 3.6
-* tensorflow-gpu==1.10.1
-* scikit-image==0.15.0
-* scikit-learn==0.23.11
-* opencv-python==3.3.1.11
-* numba
+For a fully-automatic setup of the virtual environment (tested on Linux Ubuntu 22.04), run `source scripts/install.sh`.
 
-For a fully-automatic setup of the virtual environment (tested on Linux Ubuntu 18.04), set the variable `BASE_DIR` in `scripts/install.sh` to a valid directory, and then run `source scripts/install.sh`.
-
-You should have sudo privileges to run properly the installation script.
-By default, the virtual environment will be created at `$BASE_DIR/envs/deeprec-cvpr20`. When finishing, the script will automatically activate the just created environment.
+You should have sudo privileges to run properly the installation script. The virtual environment will be created at the root repository directory. When finished, the script will automatically activate the just created environment.
 
 #### Download the datasets
 
