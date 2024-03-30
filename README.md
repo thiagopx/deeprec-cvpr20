@@ -15,7 +15,13 @@ You should have sudo privileges to run properly the installation script. The vir
 
 The datasets comprise the (i) integral documents where the small samples are extracted and (ii) the mechanically-shredded documents collections D1 and D2 used in the tests. To download them, just run `bash scripts/get_dataset.sh`.
 
-It will create a directory `datasets` in the local directory.
+It will create a directory `datasets` in the local directory. A document in our dataset is a directory with the format `D<3-digits>`. It comprises two subdirectories: `strips` (image files) and `masks` (binary `.npy` files).
+
+The name of the files follow the format `D<5-digits>`. The first 3 digits match the sequence of the document, while the following 2 digits define the order of the strip image/mask. For instance, `datasets/D2/mechanical/D004/strips/D00401.jpeg` is the first strip of the document `D004` in the dataset `D2`.
+
+**Important:**
+1. To use your own dataset, you should follow strictly the above described structure. No warranties are given otherwise.
+2. In the absence of the `mask` directory, it will be assumed the strip in composed of all pixels in the image file. 
 
 #### Demo
 
