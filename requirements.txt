@@ -3,7 +3,7 @@ gdown==5.1.0
 numpy==1.19.5
 scikit-image==0.17.2
 scikit-learn==0.23.1
-tensorflow==2.2.0
+tensorflow==2.11.1
 opencv-python==3.4.17.63
 numba==0.56.4
 matplotlib==3.5.0
